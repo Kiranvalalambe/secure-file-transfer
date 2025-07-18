@@ -2,6 +2,6 @@ server:
   port: 8080
 
 file:
-  upload-dir: uploads/
-  download-dir: downloads/
+  upload-dir: File/uploads/
+  download-dir: File/downloads/
   user-folder-enabled: true
