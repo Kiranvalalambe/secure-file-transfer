@@ -92,6 +92,7 @@ After each deployment, OWASP ZAP scans the live EC2 instance and generates a ful
 ## 📷 Screenshots
 <img width="1919" height="1016" alt="image" src="https://github.com/user-attachments/assets/e87cf0d3-eba5-4e85-aa77-2f6fcd5f01e9" />
 <img width="951" height="519" alt="image" src="https://github.com/user-attachments/assets/9c08c909-9327-4df5-83cd-ab52f5201331" />
+<img width="1918" height="1022" alt="image" src="https://github.com/user-attachments/assets/801cfcde-97a4-4518-9cda-9d9720a78318" />
 
 
 ---
