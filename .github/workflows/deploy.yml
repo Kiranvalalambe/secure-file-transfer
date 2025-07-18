@@ -51,7 +51,7 @@ jobs:
           target: http://${{ secrets.EC2_HOST }}:8080/files/upload
           fail_action: false
       - name: 📎 Upload All ZAP Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
          name: zap-reports
          path: |
