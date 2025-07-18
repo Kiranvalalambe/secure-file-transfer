@@ -1,96 +1,118 @@
+# 🔐 Secure File Transfer Application
 
-# 🛡️ Secure File Transfer System
-
-A secure and lightweight file upload/download system built using **Spring Boot**, featuring **AES encryption**, **file validation**, and structured for **Dockerization**, **CI/CD integration**, and **AWS deployment**.
-
----
-
-## 🔧 Tech Stack
-- Java 21  
-- Spring Boot  
-- REST API  
-- AES Encryption  
-- Postman (API Testing)  
-- Maven
+A production-ready, AES-encrypted file upload/download web application built with **Spring Boot**, secured and deployed using **Docker**, **GitHub Actions**, and **AWS EC2**. Integrated with **OWASP ZAP** for automated vulnerability scanning.
 
 ---
 
 ## 🚀 Features
-- 🔐 **AES-Encrypted File Uploads**: Files are stored securely with strong symmetric encryption.
-- 📥 **Decrypted File Downloads**: Users can download files securely and decrypt on the fly.
-- 📁 **User-Based Storage**: Files are stored in `uploads/{username}` directories.
-- ✅ **File Type Validation**: Only PDF, PNG, JPEG, and TXT files allowed.
-- 🧱 **Modular Architecture**: Clean separation of controller and service layers.
+
+* 🔒 AES-based file encryption before storage
+* ☁️ Uploads/downloads encrypted files by user
+* 🐳 Dockerized for container-based deployment
+* ⚙️ GitHub Actions CI/CD pipeline
+* ☁️ Hosted on AWS EC2 (Ubuntu)
+* 🛡️ Integrated ZAP scan for baseline security analysis
+* 📄 Downloadable scan reports in HTML, Markdown, and JSON
 
 ---
 
-## 📸 API Endpoints
+## 🧠 Tech Stack
 
-### 📤 Upload a File
-```
-POST /files/upload
-```
-**Form-data Params:**
-- `file`: the file to upload  
-- `username`: your username
-
-### 📥 Download a File
-```
-GET /files/download/{username}/{filename}
-```
-Returns the decrypted file with `Content-Disposition: attachment`.
+| Layer      | Tools/Tech                |
+| ---------- | ------------------------- |
+| Backend    | Spring Boot (Java 21)     |
+| Build Tool | Maven                     |
+| Security   | AES Encryption, OWASP ZAP |
+| DevOps     | Docker, GitHub Actions    |
+| Hosting    | AWS EC2                   |
 
 ---
 
-## 🛠️ Upcoming (Planned):
-- 🐳 Docker containerization
-- 🔄 CI/CD with GitHub Actions
-- 🛡️ OWASP ZAP security testing
-- ☁️ AWS EC2 deployment
-- 🧾 File logging + metadata API
+## 📦 Endpoints
+
+| Method | Endpoint                        | Description               |
+| ------ | ------------------------------- | ------------------------- |
+| POST   | `/files/upload`                 | Upload and encrypt file   |
+| GET    | `/files/download/{user}/{file}` | Download and decrypt file |
 
 ---
 
-## ✅ How to Run Locally
+## 🔧 Setup & Run Locally
 
-1. Clone this repo  
-   ```bash
-   git clone https://github.com/yourusername/secure-file-transfer
-   cd secure-file-transfer
-   ```
+### Prerequisites
 
-2. Build the project  
-   ```bash
-   mvn clean install
-   ```
+* Java 21
+* Maven
+* Docker (for container run)
 
-3. Run the app  
-   ```bash
-   mvn spring-boot:run
-   ```
+### Clone the Repository
 
-4. Test via Postman  
-   - POST: `http://localhost:8080/files/upload`
-   - GET:  `http://localhost:8080/files/download/{username}/{filename}`
-
----
-
-## 📂 Folder Structure
-
+```bash
+git clone https://github.com/Kiranvalalambe/secure-file-transfer.git
+cd secure-file-transfer
 ```
-src
-├── main
-│   ├── java
-│   │   └── com.example.File
-│   │       ├── controller
-│   │       └── service
-│   └── resources
-│       └── application.yml
-uploads/
-downloads/
+
+### Run with Maven (Dev)
+
+```bash
+mvn spring-boot:run
+```
+
+### Run with Docker (Prod)
+
+```bash
+docker build -t secure-file-app .
+docker run -p 8080:8080 secure-file-app
 ```
 
 ---
 
-## 📄 License
-This project is for educational and demonstration purposes.
+## 🚀 CI/CD Pipeline (GitHub Actions)
+
+This project uses a custom GitHub Actions pipeline that:
+
+1. Builds the JAR file using Maven
+2. Builds and pushes Docker image to Docker Hub
+3. Deploys container on AWS EC2 via SSH
+4. Runs automated OWASP ZAP security scan
+5. Uploads scan reports to GitHub Artifacts
+
+✅ Pipeline Status: **Active & Green**
+
+---
+
+## 🛡️ Security Report
+
+After each deployment, OWASP ZAP scans the live EC2 instance and generates a full security report:
+
+📌 Download: Go to [Actions tab](https://github.com/Kiranvalalambe/secure-file-transfer/actions) → Select latest run → Download `zap-reports` artifact.
+
+---
+
+## 📷 Screenshots
+<img width="1919" height="1016" alt="image" src="https://github.com/user-attachments/assets/e87cf0d3-eba5-4e85-aa77-2f6fcd5f01e9" />
+<img width="951" height="519" alt="image" src="https://github.com/user-attachments/assets/9c08c909-9327-4df5-83cd-ab52f5201331" />
+
+
+---
+
+## 🙌 Acknowledgements
+
+* [Spring Boot](https://spring.io/projects/spring-boot)
+* [Docker](https://www.docker.com/)
+* [GitHub Actions](https://github.com/features/actions)
+* [OWASP ZAP](https://owasp.org/www-project-zap/)
+* [SonarCloud](https://sonarcloud.io/) *(coming soon)*
+
+---
+
+## 🧑‍💻 Author
+
+**Kiran Valalambe**
+[LinkedIn](https://linkedin.com/in/kiran-v-15131323b/) • [GitHub](https://github.com/Kiranvalalambe)
+
+---
+
+## 📃 License
+
+This project is licensed under the MIT License.
