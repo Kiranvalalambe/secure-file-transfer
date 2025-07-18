@@ -46,6 +46,15 @@ jobs:
 
       - name: 🛡️ Run OWASP ZAP Scan
         uses: zaproxy/action-baseline@v0.11.0
+        continue-on-error: true
         with:
           target: http://${{ secrets.EC2_HOST }}:8080/files/upload
           fail_action: false
+      - name: 📎 Upload All ZAP Reports
+        uses: actions/upload-artifact@v3
+        with:
+         name: zap-reports
+         path: |
+          report_html.html
+          report_md.md
+          report_json.json
